@@ -107,12 +107,7 @@ namespace YesAlready
         /// Gets or sets a value indicating whether the duty finder accept setting is enabled.
         /// </summary>
         public bool ContentsFinderConfirmEnabled { get; set; } = false;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the duty finder one-time accept setting is enabled.
-        /// </summary>
-        public bool ContentsFinderOneTimeConfirmEnabled { get; set; } = false;
-
+        
         /// <summary>
         /// Loads the configuration.
         /// </summary>
