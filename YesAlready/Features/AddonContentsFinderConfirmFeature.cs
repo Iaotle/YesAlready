@@ -28,13 +28,6 @@ namespace YesAlready.Features
                 return;
 
             ClickContentsFinderConfirm.Using(addon).Commence();
-
-            if (Service.Configuration.ContentsFinderOneTimeConfirmEnabled)
-            {
-                Service.Configuration.ContentsFinderConfirmEnabled = false;
-                Service.Configuration.ContentsFinderOneTimeConfirmEnabled = false;
-                Service.Configuration.Save();
-            }
         }
     }
 }

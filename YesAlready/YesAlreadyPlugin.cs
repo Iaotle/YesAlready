@@ -322,9 +322,6 @@ namespace YesAlready
                 case "dutyconfirm":
                     this.ToggleDutyConfirm();
                     break;
-                case "onetimeconfirm":
-                    this.ToggleOneTimeConfirm();
-                    break;
                 default:
                     this.PrintError("I didn't quite understand that.");
                     return;
@@ -346,7 +343,6 @@ namespace YesAlready
             sb.AppendLine($"{Command} lastlist - Add the last selected list dialog with the target at the time.");
             sb.AppendLine($"{Command} lasttalk - Add the last seen target during a Talk dialog.");
             sb.AppendLine($"{Command} dutyconfirm - Toggle duty confirm.");
-            sb.AppendLine($"{Command} onetimeconfirm - Toggles duty confirm as well as one-time confirm.");
             this.PrintMessage(sb.ToString());
         }
 
@@ -414,21 +410,10 @@ namespace YesAlready
         private void ToggleDutyConfirm()
         {
             Service.Configuration.ContentsFinderConfirmEnabled ^= true;
-            Service.Configuration.ContentsFinderOneTimeConfirmEnabled = false;
             Service.Configuration.Save();
 
             var state = Service.Configuration.ContentsFinderConfirmEnabled ? "enabled" : "disabled";
             this.PrintMessage($"Duty Confirm {state}.");
-        }
-
-        private void ToggleOneTimeConfirm()
-        {
-            Service.Configuration.ContentsFinderOneTimeConfirmEnabled ^= true;
-            Service.Configuration.ContentsFinderConfirmEnabled = Service.Configuration.ContentsFinderOneTimeConfirmEnabled;
-            Service.Configuration.Save();
-
-            var state = Service.Configuration.ContentsFinderOneTimeConfirmEnabled ? "enabled" : "disabled";
-            this.PrintMessage($"Duty Confirm and One Time Confirm {state}.");
         }
 
         #endregion
